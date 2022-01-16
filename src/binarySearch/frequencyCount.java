@@ -1,4 +1,4 @@
-package practice;
+package binarySearch;
 
 public class frequencyCount {
 	public static void main(String[] args) {

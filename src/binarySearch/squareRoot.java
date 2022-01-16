@@ -1,4 +1,4 @@
-package practice;
+package binarySearch;
 
 public class squareRoot {
 	public static float root(int N, int P){

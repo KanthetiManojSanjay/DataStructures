@@ -1,4 +1,4 @@
-package practice;
+package binarySearch;
 
 public class rotatedSearch {
 	public static void main(String[] args) {
