@@ -72,7 +72,53 @@ public class Graph {
         int temp = dest;
         while (temp != -1) {
             System.out.println(temp);
-            temp=parent[temp];
+            temp = parent[temp];
         }
+    }
+
+    // DFS implementation
+    void DFS(int src) {
+        boolean visited[] = new boolean[V];
+        DFSHelper(src, visited);
+
+    }
+
+    void DFSHelper(int node, boolean visited[]) {
+        System.out.println(node);
+        visited[node] = true;
+        Iterator<Integer> it = adjList[node].listIterator();
+        while (it.hasNext()) {
+            int nbr = it.next();
+            if (!visited[nbr]) {
+                DFSHelper(nbr, visited);
+            }
+        }
+    }
+
+
+    // Cycle detection in undirected graph using DFS
+    boolean detectCycle(int src) {
+        boolean visited[] = new boolean[V];
+        return detectCycleHelper(src, visited,-1);
+    }
+
+    boolean detectCycleHelper(int node, boolean[] visited, int parent) {
+        visited[node] = true;
+        Iterator<Integer> it = adjList[node].listIterator();
+        while (it.hasNext()) {
+            int nbr = it.next();
+            //recursive case
+            if (!visited[nbr]) {
+                boolean cycleFound = detectCycleHelper(nbr, visited, node);
+                if (cycleFound) {
+                    return true;
+                }
+            }
+            // detecting the backedge (base case)
+            else if (nbr != parent) {
+                return true;
+            }
+        }
+        return false;
     }
 }

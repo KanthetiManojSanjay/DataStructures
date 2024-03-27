@@ -119,7 +119,6 @@ public class BinarySearchTree {
 
             //case 3 two child
             else {
-
                 Node temp = root.left;
                 while (temp.right != null) {
                     temp = temp.right;

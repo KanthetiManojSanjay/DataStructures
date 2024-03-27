@@ -45,6 +45,12 @@ public class GraphMain {
 
         System.out.println(g);
 
-        g.BFS(0,5);
+        //g.BFS(0,5);
+        //g.DFS(0);
+        if (g.detectCycle(0)) {
+            System.out.println("yes there is a cycle");
+        } else {
+            System.out.println("there is no cycle");
+        }
     }
 }
