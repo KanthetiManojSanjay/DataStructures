@@ -99,7 +99,7 @@ public class Graph {
     // Cycle detection in undirected graph using DFS
     boolean detectCycle(int src) {
         boolean visited[] = new boolean[V];
-        return detectCycleHelper(src, visited,-1);
+        return detectCycleHelper(src, visited, -1);
     }
 
     boolean detectCycleHelper(int node, boolean[] visited, int parent) {
@@ -121,4 +121,43 @@ public class Graph {
         }
         return false;
     }
+
+
+    // Cycle detection in directed graph using DFS
+    boolean detectCycle_DirectedGraph(int src) {
+        boolean visited[] = new boolean[V];
+        boolean stack[] = new boolean[V];
+        for (int i = 0; i < V; i++) {
+            if (!visited[i]) {
+                if (detectCycle_DirectedGraphHelper(i, visited, stack)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean detectCycle_DirectedGraphHelper(int node, boolean[] visited, boolean[] stack) {
+        //arrive at node
+        visited[node] = true;
+        stack[node] = true;
+
+        // do some work at node, return true if backedge is found
+        Iterator<Integer> it = adjList[node].listIterator();
+        while (it.hasNext()) {
+            int nbr = it.next();
+            if (stack[nbr]) {
+                return true;
+            } else if (!visited[nbr]) {
+                boolean cycleFound = detectCycle_DirectedGraphHelper(nbr, visited, stack);
+                if (cycleFound) {
+                    return true;
+                }
+            }
+        }
+        //going back
+        stack[node] = false;
+        return false;
+    }
+
 }

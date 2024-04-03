@@ -33,7 +33,7 @@ public class GraphMain {
         System.out.println(adjacencyList);*/
 
 
-        Graph g = new Graph(7);
+       /* Graph g = new Graph(7);
         g.addEdge(0, 1, true);
         g.addEdge(0, 2, true);
         g.addEdge(2, 3, true);
@@ -50,6 +50,19 @@ public class GraphMain {
         if (g.detectCycle(0)) {
             System.out.println("yes there is a cycle");
         } else {
+            System.out.println("there is no cycle");
+        }
+*/
+
+
+        Graph g = new Graph(3);
+        g.addEdge(0, 1, false);
+        g.addEdge(1, 2, false);
+        g.addEdge(2, 0, false);
+
+        if(g.detectCycle_DirectedGraph(0)){
+            System.out.println("yes there is a cycle");
+        }else{
             System.out.println("there is no cycle");
         }
     }
