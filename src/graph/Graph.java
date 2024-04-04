@@ -1,9 +1,6 @@
 package graph;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author kansanja on 10/03/24.
@@ -159,5 +156,76 @@ public class Graph {
         stack[node] = false;
         return false;
     }
+
+    // Topological sort using DFS
+    List<Integer> topologicalSort() {
+        boolean visited[] = new boolean[V];
+        Arrays.fill(visited, false);
+        List<Integer> output = new ArrayList<>();
+        for (int i = 0; i < V; i++) {
+            if (!visited[i]) {
+                topologicalSortHelper(i, visited, output);
+            }
+        }
+        Collections.reverse(output);
+        return output;
+    }
+
+    void topologicalSortHelper(int node, boolean[] visited, List<Integer> output) {
+        //mark the node as visited
+        visited[node] = true;
+
+        //traverse the non visited nbr recursively
+        Iterator<Integer> it = adjList[node].listIterator();
+        while (it.hasNext()) {
+            int nbr = it.next();
+            //recursive case
+            if (!visited[nbr]) {
+                topologicalSortHelper(nbr, visited, output);
+            }
+        }
+        output.add(node);
+    }
+
+    // kahn's algorithm(Modified BFS) for topological sort
+    List<Integer> topologicalSortBFS() {
+        int indegree[] = new int[V];
+        Arrays.fill(indegree, 0);
+
+        LinkedList<Integer> queue = new LinkedList<>();
+        List<Integer> output = new ArrayList<>();
+
+        // update the indegree array
+        for (int i = 0; i < V; i++) {
+            Iterator<Integer> it = adjList[i].listIterator();
+            while (it.hasNext()) {
+                int nbr = it.next();
+                indegree[nbr]++;
+            }
+        }
+
+        // traverse indegree and add nodes with 0 indegree to queue
+        for (int i = 0; i < V; i++) {
+            if (indegree[i] == 0) {
+                queue.add(i);
+            }
+        }
+
+        while (!queue.isEmpty()) {
+            int node = queue.poll();
+            output.add(node);
+            Iterator<Integer> it = adjList[node].listIterator();
+            while (it.hasNext()) {
+                int nbr = it.next();
+                indegree[nbr]--;
+                if (indegree[nbr] == 0) {
+                    queue.add(nbr);
+                }
+            }
+        }
+        return output;
+    }
+
+
 
 }

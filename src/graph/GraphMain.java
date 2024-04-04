@@ -55,7 +55,7 @@ public class GraphMain {
 */
 
 
-        Graph g = new Graph(3);
+/*        Graph g = new Graph(3);
         g.addEdge(0, 1, false);
         g.addEdge(1, 2, false);
         g.addEdge(2, 0, false);
@@ -64,6 +64,19 @@ public class GraphMain {
             System.out.println("yes there is a cycle");
         }else{
             System.out.println("there is no cycle");
-        }
+        }*/
+
+
+        Graph g = new Graph(6);
+        g.addEdge(0, 2, false);
+        g.addEdge(0, 5, false);
+        g.addEdge(1, 2, false);
+        g.addEdge(1, 3, false);
+        g.addEdge(2, 5, false);
+        g.addEdge(2, 4, false);
+        g.addEdge(3, 4, false);
+        g.addEdge(3, 5, false);
+        //System.out.println(g.topologicalSort());
+        System.out.println(g.topologicalSortBFS());
     }
 }
