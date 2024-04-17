@@ -1,30 +1,29 @@
-package array;
+package binarySearch;
 
 import java.util.Scanner;
 
 /**
- * @author kansanja on 24/03/24.
+ * @author kansanja on 16/04/24.
  */
-public class BinarySearch {
+public class OrderAgnosticBinarySearch {
 
     // Iterative Approach
     private static int binarySearch(int[] arr, int n, int key) {
 
-        // TimeComplexity is O(LogN) as in each iteration we are reducing the search size of array to half(i.e. N/2)
         int start = 0;
         int end = n - 1;
         while (start <= end) {
             int mid = (start + end) / 2;
             if (arr[mid] == key) {
                 return mid;
-            } else if (arr[mid] > key) {
-                end = mid - 1;
-            } else {
+            } else if ((arr[start] < arr[end] && arr[mid] > key) || (arr[start] > arr[end] && arr[mid] < key)) {
+                end = mid - 1;            } else {
                 start = mid + 1;
             }
         }
         return -1;
     }
+
 
     // Recursive Approach
     private static int binarySearch_Recursively(int[] arr, int start, int end, int key) {
@@ -35,7 +34,7 @@ public class BinarySearch {
         int mid = (start + end) / 2;
         if (arr[mid] == key) {
             return mid;
-        } else if (arr[mid] > key) {
+        } else if ((arr[start] < arr[end] && arr[mid] > key) || (arr[start] > arr[end] && arr[mid] < key)) {
             return binarySearch_Recursively(arr, start, mid - 1, key);
         } else {
             return binarySearch_Recursively(arr, mid + 1, end, key);
@@ -43,8 +42,8 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) {
-        // Array should be sorted/montonic i.e. non-decreasing or non-increasing
-        int arr[] = {10, 20, 30, 40, 50, 60, 70, 89};
+        int arr[] = {2, 8, 11, 19};
+
         int n = arr.length;
         Scanner sc = new Scanner(System.in);
         int key = sc.nextInt();
@@ -55,11 +54,15 @@ public class BinarySearch {
             System.out.println(key + " is not found!");
         }
 
-        binarySearch_Recursively(arr, 0, n - 1, key);
-        if (index != -1) {
-            System.out.println("Key " + key + " is present at index " + index);
+        int arr2[] = {32, 28, 17, 9, 3};
+        int n2 = arr2.length;
+        Scanner sc2 = new Scanner(System.in);
+        int key2 = sc2.nextInt();
+        int index2 = binarySearch_Recursively(arr2, 0, n2 - 1, key2);
+        if (index2 != -1) {
+            System.out.println("Key " + key2 + " is present at index " + index2);
         } else {
-            System.out.println(key + " is not found!");
+            System.out.println(key2 + " is not found!");
         }
     }
 }

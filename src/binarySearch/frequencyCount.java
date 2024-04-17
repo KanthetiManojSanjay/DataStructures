@@ -1,13 +1,6 @@
 package binarySearch;
 
 public class frequencyCount {
-	public static void main(String[] args) {
-        int[] arr = {0, 1, 1, 2, 3, 3, 3, 3, 4, 5, 5, 5, 10};
-        int lb = lowerBound(arr, 3);
-        int ub = upperBound(arr, 3);
-        int count=(ub - lb) + 1;
-        System.out.println("Frequency count is :" + count);
-    }
 
     private static int lowerBound(int[] arr, int key) {
         int s = 0;
@@ -16,6 +9,7 @@ public class frequencyCount {
         while (s <= e) {
             int mid = (s + e) / 2;
             if (arr[mid] == key) {
+                // Found target, update lowerBound i.e. ans and move to the left to find a smaller position by setting end=mid-1
                 ans = mid;
                 e = mid - 1;
             } else if (arr[mid] < key) {
@@ -34,6 +28,7 @@ public class frequencyCount {
         while (s <= e) {
             int mid = (s + e) / 2;
             if (arr[mid] == key) {
+                // Found target, update upperBound i.e. ans and move to the right to find a higher position by setting start=mid+1
                 ans = mid;
                 s = mid + 1;
             } else if (arr[mid] < key) {
@@ -44,5 +39,21 @@ public class frequencyCount {
         }
         return ans;
     }
+
+    public static void main(String[] args) {
+        int[] arr = {0, 1, 1, 2, 3, 3, 3, 3, 4, 5, 5, 5, 10};
+        int key = 3;
+        int lb = lowerBound(arr, key);
+        int ub = upperBound(arr, key);
+        System.out.println("Lower bound is :" + lb);
+        System.out.println("Upper bound is :" + ub);
+        if (lb != -1 && ub != -1) {
+            System.out.printf("Frequency Count(%d) = %d%n", key, (ub - lb) + 1);
+
+        } else {
+            System.out.printf("Frequency Count(%d) = 0%n", key);
+        }
+    }
+
 
 }
