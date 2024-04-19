@@ -17,7 +17,8 @@ public class OrderAgnosticBinarySearch {
             if (arr[mid] == key) {
                 return mid;
             } else if ((arr[start] < arr[end] && arr[mid] > key) || (arr[start] > arr[end] && arr[mid] < key)) {
-                end = mid - 1;            } else {
+                end = mid - 1;
+            } else {
                 start = mid + 1;
             }
         }
