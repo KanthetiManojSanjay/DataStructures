@@ -42,9 +42,9 @@ public class BinaryTree {
 
     void display() {
         //preOrderPrint(root);
-        //inOrderPrint(root);
-       // postOrderPrint(root);
-        levelorderPrint(root);
+        // inOrderPrint(root);
+        postOrderPrint(root);
+        // levelorderPrint(root);
     }
 
     private void preOrderPrint(Node root) {
@@ -78,7 +78,7 @@ public class BinaryTree {
         System.out.println(root.data);
     }
 
-    private void levelorderPrint(Node root) {
+    public static void levelorderPrint(Node root) {
         Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
 
@@ -97,5 +97,27 @@ public class BinaryTree {
         }
     }
 
+    public static Node levelOrderBuild() {
+        Scanner sc = new Scanner(System.in);
+        Node root = new Node(sc.nextInt());
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            Node current = queue.poll();
+
+            int left = sc.nextInt();
+            int right = sc.nextInt();
+            if (left != -1) {
+                current.left = new Node(left);
+                queue.offer(current.left);
+            }
+            if (right != -1) {
+                current.right = new Node(right);
+                queue.offer(current.right);
+            }
+        }
+        return root;
+    }
 
 }
