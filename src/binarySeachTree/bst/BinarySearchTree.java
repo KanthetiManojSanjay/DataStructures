@@ -49,6 +49,7 @@ public class BinarySearchTree {
         return root;
     }
 
+    //	Inorder traversal of binary search tree will be a sorted
     void inOrderPrint(Node root) {
         //base case
         if (root == null) {
