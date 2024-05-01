@@ -173,6 +173,78 @@ public class Node {
     }
 
 
+    class LinkedList1 {
+        Node head;
+        Node tail;
+
+        public LinkedList1() {
+            head = tail = null;
+        }
+    }
+
+    public LinkedList1 tree2LL(Node root) {
+
+        LinkedList1 l = new LinkedList1();
+        //base case
+        if (root == null) {
+            l.head = l.tail = null;
+            return l;
+        }
+
+        // rec cases
+        if (root.left == null && root.right == null) {
+            l.head = l.tail = root;
+        } else if (root.left != null && root.right == null) {
+            LinkedList1 leftLL = tree2LL(root.left);
+            leftLL.tail.right = root;
+
+            l.head = leftLL.head;
+            l.tail = root;
+        } else if (root.left == null && root.right != null) {
+            LinkedList1 rightLL = tree2LL(root.right);
+            root.right = rightLL.head;
+            l.head = root;
+            l.tail = rightLL.tail;
+        } else if (root.left != null && root.right != null) {
+            LinkedList1 leftLL = tree2LL(root.left);
+            LinkedList1 rightLL = tree2LL(root.right);
+
+            leftLL.tail.right = root;
+            root.right = rightLL.head;
+            l.head = leftLL.head;
+            l.tail = rightLL.tail;
+        }
+        return l;
+    }
+
+
+    public static Node inOrderSuccessor(Node root, Node target) {
+
+        // If right subtree
+        if (target.right != null) {
+            Node temp = target.right;
+            while (temp.left != null) {
+                temp = temp.left;
+            }
+            return temp;
+        }
+
+        // Otherwise
+        Node temp = root;
+        Node succ = null;
+        while (temp != null) {
+            if (temp.data > target.data) {
+                succ = temp;
+                temp = temp.left;
+            } else if (temp.data < target.data) {
+                temp = temp.right;
+            } else {
+                break;
+            }
+        }
+        return succ;
+    }
+
     public static void main(String[] args) {
 
         int[] arr = {8, 3, 10, 1, 6, 14, 4, 7, 13};
@@ -197,8 +269,22 @@ public class Node {
         Node root1 = minHeightBST(arr1, start, end);
         printLevelOrder(root1);*/
 
-        int target = 17;
-        System.out.printf("Closest element for target %d in BST is %d%n", target, closestInBST(root, target));
+       /* int target = 17;
+        System.out.printf("Closest element for target %d in BST is %d%n", target, closestInBST(root, target));*/
+
+
+      /*  LinkedList1 linkedList = root.tree2LL(root);
+        Node temp = linkedList.head;
+
+        while (temp != null) {
+            System.out.print(temp.data + "->");
+            temp = temp.right;
+        }*/
+
+        System.out.println();
+        System.out.println("Inorder successor of 7 is: " + inOrderSuccessor(root, root.left.right.right).data);
+        System.out.println("Inorder successor of 10 is: " + inOrderSuccessor(root, root.right).data);
+
 
     }
 
