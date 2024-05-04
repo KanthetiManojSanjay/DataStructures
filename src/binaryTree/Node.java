@@ -175,7 +175,7 @@ public class Node {
             for (int node : path) {
                 System.out.print(node + "->");
             }
-            System.out.print(root.data + "->");
+            System.out.print(root.data);
             System.out.println();
             return;
         }
@@ -247,11 +247,8 @@ public class Node {
         MaxSubSumPair left = maximumSubSetSumTree(root.left);
         MaxSubSumPair right = maximumSubSetSumTree(root.right);
 
-        int inc = root.data + left.exc + right.exc;
-        int exc = Math.max(left.inc, left.exc) + Math.max(right.inc, right.exc);
-
-        sumPair.inc = inc;
-        sumPair.exc = exc;
+        sumPair.inc = root.data + left.exc + right.exc;
+        sumPair.exc = Math.max(left.inc, left.exc) + Math.max(right.inc, right.exc);
         return sumPair;
     }
 
@@ -356,7 +353,7 @@ public class Node {
 //        System.out.println();
 //        printPostOrder(root);
 //        System.out.println();
-//        levelOrder(root);
+        levelOrder(root);
 
 
         // 1 2 3 4 5 -1 6 -1 -1 7 -1 -1 -1 -1 -1
@@ -366,7 +363,7 @@ public class Node {
 //		System.out.println("Height of the tree is : " + height(r1));
 //		System.out.println("Diameter of the tree is : " + diameter(r1));
 //		HDPair pair = optDiameter(r1);
-//		System.out.println("Height of the tree is : " + pair.height + " & diameter of tree is :" + pair.diameter);
+//        System.out.println("Height of the tree is : " + pair.height + " & diameter of tree is : " + pair.diameter);
 
         // 1 2 4 -1 -1 5 7 -1 -1 -1 3 -1 6 -1 -1
 //        ArrayList<Integer> list = new ArrayList<>();
@@ -379,16 +376,18 @@ public class Node {
 //        1 2 3 4 5 -1 6 -1 -1 7 8 -1 -1 -1 -1 9 10 -1 -1 -1 -1
 //        Node r1 = levelorderBuild();
 //        levelOrder(r1);
-/*        HBPair hbPair = heightBalancedTree(root);
+/*
+        HBPair hbPair = heightBalancedTree(root);
         if (hbPair.isBalanced) {
             System.out.println("Yes, its a height Balanced tree");
         } else {
             System.out.println("Not a height Balanced tree");
-        }*/
+        }
+*/
 
 
-    /*    MaxSubSumPair sumPair = maximumSubSetSumTree(root);
-        System.out.println("Max subset sum is: " + Math.max(sumPair.inc, sumPair.exc));*/
+        MaxSubSumPair sumPair = maximumSubSetSumTree(root);
+        System.out.println("Max subset sum is: " + Math.max(sumPair.inc, sumPair.exc));
 
 //        printAtLevelK(root, 2);
 
@@ -397,7 +396,7 @@ public class Node {
 //        printNodesAtDistanceK(root, target, 2);
 
         // 1 2 4 -1 -1 5 -1 -1 3 6 -1 8 -1 -1 7 -1 9 -1 -1
-        verticalOrderPrint(root);
+        //  verticalOrderPrint(root);
 
     }
 

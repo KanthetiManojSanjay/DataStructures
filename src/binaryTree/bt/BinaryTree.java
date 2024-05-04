@@ -81,18 +81,28 @@ public class BinaryTree {
     public static void levelorderPrint(Node root) {
         Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
+        queue.offer(null);
 
         while (!queue.isEmpty()) {
-            Node node = queue.poll();
-            System.out.println(node.data);
+            Node node = queue.peek();
+            if (node == null) {
+                System.out.println();
+                queue.poll();
+                if (!queue.isEmpty()) {
+                    queue.offer(null);
+                }
+            } else {
+                System.out.print(node.data + " ");
+                queue.poll();
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
 
-            if (node.left != null) {
-                queue.offer(node.left);
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
             }
 
-            if (node.right != null) {
-                queue.offer(node.right);
-            }
 
         }
     }

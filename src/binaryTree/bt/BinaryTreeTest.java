@@ -12,6 +12,7 @@ public class BinaryTreeTest {
         //BinaryTree binaryTree = new BinaryTree();
         //binaryTree.display();
 
+        // 1 2 3 4 5 -1 6 -1 -1 7 -1 -1 -1 -1 -1
         Node root = levelOrderBuild();
         levelorderPrint(root);
     }
