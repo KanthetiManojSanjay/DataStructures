@@ -258,7 +258,7 @@ public class Node {
         if (root == null)
             return;
         if (k == 0) {
-            System.out.println(root.data);
+            System.out.print(root.data + " ");
             return;
         }
 
@@ -341,19 +341,54 @@ public class Node {
         traverseTree(node.right, d + 1, map);
     }
 
+    public static int minDepth(Node root) {
+        Node temp = root;
+        if (temp != null) {
+            int hleft = height(root.left);
+            int hright = height(root.right);
+            return 1 + Math.min(hleft, hright);
+        }
+        return -1;
+    }
+
+    public static boolean isSymmetric(Node root) {
+        if (root == null)
+            return true;
+        return isSymmetricHelper(root.left, root.right);
+    }
+
+    private static boolean isSymmetricHelper(Node left, Node right) {
+        if (left == null && right == null)
+            return true;
+        else if (left == null || right == null)
+            return false;
+
+        return left.data == right.data && isSymmetricHelper(left.left, right.right) && isSymmetricHelper(left.right, right.left);
+    }
+
+
+    private static boolean isSameTree(Node a, Node b) {
+        if (a == null && b == null)
+            return true;
+        else if (a == null || b == null)
+            return false;
+
+        return a.data == b.data && isSameTree(a.left, b.left) && isSameTree(a.right, b.right);
+    }
+
 
     public static void main(String[] args) {
 
         // 1 2 4 -1 -1 5 7 -1 -1 -1 3 -1 6 -1 -1
 
-        Node root = buildTree();
+//        Node root = buildTree();
 //        printPreorder(root);
 //        System.out.println();
 //        printInorder(root);
 //        System.out.println();
 //        printPostOrder(root);
 //        System.out.println();
-        levelOrder(root);
+//        levelOrder(root);
 
 
         // 1 2 3 4 5 -1 6 -1 -1 7 -1 -1 -1 -1 -1
@@ -386,17 +421,45 @@ public class Node {
 */
 
 
-        MaxSubSumPair sumPair = maximumSubSetSumTree(root);
-        System.out.println("Max subset sum is: " + Math.max(sumPair.inc, sumPair.exc));
+/*        MaxSubSumPair sumPair = maximumSubSetSumTree(root);
+        System.out.println("Max subset sum is: " + Math.max(sumPair.inc, sumPair.exc));*/
 
 //        printAtLevelK(root, 2);
 
         // 1 2 4 -1 -1 5 7 -1 -1 8 9 -1 -1 10 -1 -1 3 -1 6 -1 -1
-//        int target = 5;
-//        printNodesAtDistanceK(root, target, 2);
+/*        int target = 5;
+        printNodesAtDistanceK(root, target, 2);*/
 
         // 1 2 4 -1 -1 5 -1 -1 3 6 -1 8 -1 -1 7 -1 9 -1 -1
-        //  verticalOrderPrint(root);
+//        verticalOrderPrint(root);
+
+        // 2 7 5 -1 9 -1 1 11 4 -1 -1 -1 -1 -1 -1
+/*        Node r1 = levelorderBuild();
+        levelOrder(r1);
+        System.out.println("Minimum depth is : " + minDepth(r1));*/
+
+
+        // 1 2 2 3 4 4 3 -1 -1 -1 -1 -1 -1 -1 -1
+/*        Node r1 = levelorderBuild();
+        levelOrder(r1);
+        if (isSymmetric(r1))
+            System.out.println("yes, it is a symmetric tree");
+        else
+            System.out.println("Not a symmetric tree");*/
+
+
+        Node a = new Node(1);
+        a.left = new Node(2);
+        a.right = new Node(3);
+
+        Node b = new Node(1);
+        b.left = new Node(2);
+        b.right = new Node(3);
+        if (isSameTree(a, b))
+            System.out.println("yes, it is a identical tree");
+        else
+            System.out.println("Not an identical tree");
+
 
     }
 

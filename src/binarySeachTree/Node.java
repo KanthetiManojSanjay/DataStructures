@@ -117,6 +117,7 @@ public class Node {
     }
 
 
+    // If we normally create BST from sortedArray then it creates skewed tree of height O(N) & O(N^2) time complexity so we can create minheight balanced tree
     public static Node minHeightBST(int[] arr, int start, int end) {
 
         if (start > end) {
