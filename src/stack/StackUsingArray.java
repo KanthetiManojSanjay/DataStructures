@@ -2,8 +2,18 @@ package stack;
 
 /**
  * @author kansanja on 07/03/24.
+ *
+ * follows LIFO (Last In First One)
+ *
+ * Stack implementations are:
+ *   1. Fixed size Array
+ *   2. Dynamic Array
+ *   3. Linkedlist
+ *
+ * Below is Stack implementation using FixedArray
  */
 public class StackUsingArray {
+    // these fields are made protected as these needs to be used in child class as well
     protected int[] data;
     protected int top;
     public static final int DEFAULT_CAPACITY = 10;
@@ -38,7 +48,7 @@ public class StackUsingArray {
             throw new Exception("Stack is empty");
         }
         int ans = data[top];
-        data[top] = 0;
+        data[top] = 0; //optional step as sometimes the actual value can also be 0
         top--;
         return ans;
     }

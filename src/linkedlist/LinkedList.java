@@ -1,43 +1,29 @@
 package linkedlist;
 
 public class LinkedList {
-    Node head;
-    Node tail;
-    int size = 0;
+    private Node head;
+    private Node tail;
+    private int size = 0;
 
-    public class Node {
-        int value;
-        Node next;
-
-        public Node(int value) {
-            super();
-            this.value = value;
-        }
-
+    LinkedList() {
+        head = tail = null;
+        size = 0;
     }
 
+
+    // O(1)
     public void insertAtFirst(int element) {
         Node node = new Node(element);
         node.next = head;
         head = node;
-	/*	if (tail == null) {
-			tail = head;
-		}*/
+
         if (size == 0) {
             tail = node;
         }
         size++;
     }
 
-    public void display() {
-        Node temp = head;
-        while (temp != null) {
-            System.out.print(temp.value + "->");
-            temp = temp.next;
-        }
-        System.out.println("null");
-    }
-
+    // O(1)
     public void insertAtLast(int element) {
         if (size == 0) {
             insertAtFirst(element);
@@ -50,6 +36,7 @@ public class LinkedList {
 
     }
 
+    // O(N)
     public void addAt(int data, int idx) {
         if (idx < 0 || idx > size) {
             throw new IllegalArgumentException("Index of bounds");
@@ -60,6 +47,7 @@ public class LinkedList {
             insertAtLast(data);
         } else {
             Node temp = head;
+            // In worst case we may need to iterate till end so O(N)
             for (int jump = 1; jump <= idx - 1; jump++) {
                 temp = temp.next;
             }
@@ -70,64 +58,21 @@ public class LinkedList {
         }
     }
 
-    public int removeFirst() throws Exception {
-        if (size == 0) {
-            throw new Exception("Linked list is empty");
-        }
-        int output = head.value;
-        if (size == 1) {
-            head = tail = null;
-            size = 0;
-        } else {
-            head = head.next;
-            size--;
-        }
-        return output;
+    // O(1)
+    public int getSize() {
+        return size;
     }
 
-    public int removeLast() throws Exception {
-        if (size == 0) {
-            throw new Exception("Linked list is empty");
+    // O(N)
+    public void display() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.value + "->");
+            temp = temp.next;
         }
-        int output = tail.value;
-        if (size == 1) {
-            head = tail = null;
-            size = 0;
-        } else {
-            Node temp = head;
-            while (temp.next != tail) {
-                temp = temp.next;
-            }
-            temp.next = null;
-            tail = temp;
-            size--;
-        }
-        return output;
+        System.out.println("null");
     }
 
-    public int removeAt(int idx) throws Exception {
-        if (size == 0) {
-            throw new Exception("Linked list is empty");
-        }
-        if (idx < 0 || idx >= size) {
-            throw new Exception("Index of bounds");
-        }
-        if (idx == 0) {
-            return removeFirst();
-        } else if (idx == size - 1) {
-            return removeLast();
-        } else {
-            Node temp = head;
-            for (int jump = 1; jump < idx; jump++) {
-                temp = temp.next;
-            }
-            Node output = temp.next;
-            temp.next = output.next;
-            output.next = null;
-            size--;
-            return output.value;
-        }
-    }
 
     public int getFirst() {
         if (size == 0) {
@@ -154,12 +99,77 @@ public class LinkedList {
             return getLast();
         } else {
             Node temp = head;
-            for (int jump = 1; jump < idx; jump++) {
+            for (int jump = 1; jump <= idx; jump++) {
                 temp = temp.next;
             }
             return temp.value;
         }
     }
+
+    // O(1)
+    public int removeFirst() throws Exception {
+        if (size == 0) {
+            throw new Exception("Linked list is empty");
+        }
+        int output = head.value;
+        if (size == 1) {
+            head = tail = null;
+            size = 0;
+        } else {
+            head = head.next;
+            size--;
+        }
+        return output;
+    }
+
+    // O(N)
+    public int removeLast() throws Exception {
+        if (size == 0) {
+            throw new Exception("Linked list is empty");
+        }
+        int output = tail.value;
+        if (size == 1) {
+            head = tail = null;
+            size = 0;
+        } else {
+            // As it is a singly linkedList so we dont have prev Node reference hence had to traverse from head hence O(N) time complexity
+            // If we have Doubly linked list then we can traverse 1 step back i.e. prev which can be done in O(1)
+            Node temp = head;
+            while (temp.next != tail) {
+                temp = temp.next;
+            }
+            temp.next = null;
+            tail = temp;
+            size--;
+        }
+        return output;
+    }
+
+    //O(N) - worstcase if the index is the last element
+    public int removeAt(int idx) throws Exception {
+        if (size == 0) {
+            throw new Exception("Linked list is empty");
+        }
+        if (idx < 0 || idx >= size) {
+            throw new Exception("Index of bounds");
+        }
+        if (idx == 0) {
+            return removeFirst();
+        } else if (idx == size - 1) {
+            return removeLast();
+        } else {
+            Node temp = head;
+            for (int jump = 1; jump < idx; jump++) {
+                temp = temp.next;
+            }
+            Node output = temp.next;
+            temp.next = output.next;
+            output.next = null;
+            size--;
+            return output.value;
+        }
+    }
+
 
     public Node reverse(Node head) {
         if (head == null || head.next == null)

@@ -4,7 +4,13 @@ package queue;
  * @author kansanja on 07/03/24.
  */
 
-// Queue implementation using Fixed sized Array(Circular queue)
+/* Queue implementation using Fixed sized Array(Circular queue)
+// FIFO - insertion at rear end and deletion at front end
+  FIFO Queue implementations are:
+  1. Fixed size Array (Circular Queue)
+  2. Dynamic Array
+  3. queue using Linkedlist
+ */
 public class Queue {
     protected int[] data;
     protected int size;
@@ -24,6 +30,7 @@ public class Queue {
         this.front = 0;
     }
 
+    // O(1)
     public void enqueue(int value) throws Exception {
         if (data.length == size) {
             throw new Exception("Queue is full");
@@ -34,6 +41,7 @@ public class Queue {
 
     }
 
+    // O(1)
     public int dequeue() throws Exception {
         if (size == 0) {
             throw new Exception("Queue is empty");
@@ -44,6 +52,7 @@ public class Queue {
         return output;
     }
 
+    // O(1)
     public int peek() throws Exception {
         if (size == 0) {
             throw new Exception("Queue is empty");

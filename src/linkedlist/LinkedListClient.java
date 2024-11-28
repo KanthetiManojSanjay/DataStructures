@@ -10,7 +10,7 @@ public class LinkedListClient {
         list.insertAtLast(5);
         list.display();
         list.addAt(0, 0);
-        list.addAt(100, list.size);
+        list.addAt(100, list.getSize());
         list.display();
         list.addAt(4, 3);
         list.display();
@@ -19,7 +19,7 @@ public class LinkedListClient {
         System.out.println(list.getAt(4));
         System.out.println(list.removeFirst());
         list.display();
-        System.out.println(list.size);
+        System.out.println(list.getSize());
         System.out.println(list.removeLast());
         list.display();
         System.out.println(list.removeAt(2));
