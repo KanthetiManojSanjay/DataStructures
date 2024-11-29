@@ -4,6 +4,8 @@ import java.util.*;
 
 /**
  * @author kansanja on 10/03/24.
+ * Every tree is a graph but Tree can't have cycle
+ * Graph is also a Tree but graph can have cycle
  */
 public class Graph {
     int V;
@@ -32,8 +34,18 @@ public class Graph {
                 '}';
     }
 
+    /**
+     * BFS Applications
+     * 1. To final all vertices in one connected component
+     * 2. Cycle detection in undirected graphs
+     * 3. Shortest path in unweighted graph
+     * 4. Flood fill algorithm
+     * 5. Maze generation algorithms
+     * 6. Testing graph for bipartiness
+     * 7. Ford fulkerson algorithm for computing max flow in a flow network
+     */
 
-    // Implementation of BFS - TimeComplexity is O(V+E)
+    // Implementation of BFS - TimeComplexity is O(V+E) .Similar to levelOrder in Trees
     void BFS(int src, int dest) {
         boolean visited[] = new boolean[V];
         int parent[] = new int[V];
@@ -73,7 +85,17 @@ public class Graph {
         }
     }
 
-    // DFS implementation
+    /**
+     * DFS Application:
+     * 1. Finding connected components
+     * 2. Topological sorting
+     * 3. Cycle detection in graphs
+     * 4. Finding bridges of graph
+     * 5. Finding strongly connected components
+     * 6. Maze generation
+     * 7. Finding biconnectivity in graphs
+     */
+    // DFS implementation(assuming 1 component in graph) - Similar to Preorder in trees
     void DFS(int src) {
         boolean visited[] = new boolean[V];
         DFSHelper(src, visited);
@@ -93,7 +115,7 @@ public class Graph {
     }
 
 
-    // Cycle detection in undirected graph using DFS
+    // Cycle detection in undirected graph using DFS. we can also solve this using BFS as well
     boolean detectCycle(int src) {
         boolean visited[] = new boolean[V];
         return detectCycleHelper(src, visited, -1);
@@ -157,7 +179,7 @@ public class Graph {
         return false;
     }
 
-    // Topological sort using DFS
+    // Topological sort(in DAG - Directed Acyclic graph) using DFS
     List<Integer> topologicalSort() {
         boolean visited[] = new boolean[V];
         Arrays.fill(visited, false);
@@ -225,7 +247,6 @@ public class Graph {
         }
         return output;
     }
-
 
 
 }

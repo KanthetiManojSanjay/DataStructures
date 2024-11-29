@@ -5,6 +5,13 @@ import java.util.List;
 
 /**
  * @author kansanja on 10/03/24.
+ * Adv of edgeList
+ * 1) incase of weighted graph then we sort the edgeList in O(ELogE) and then pick edges based on weight
+ * this can be helpful if we are building minimum spanning tree algo
+
+ * This is not efficient bcz
+ * 1) lets say if we have to check if there is any edge then we have to do linear search to identify
+ * 2) Similarly if we need to identify neighbours of a vertex then also we need to check the complete edgeList to identify which takes O(E)
  */
 
 class Edge {

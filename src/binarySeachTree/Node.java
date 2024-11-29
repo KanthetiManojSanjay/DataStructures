@@ -16,6 +16,7 @@ public class Node {
         this.right = null;
     }
 
+    // O(H)
     public static Node insert(Node root, int key) {
         if (root == null) {
             return new Node(key);
