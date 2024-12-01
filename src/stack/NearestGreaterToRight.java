@@ -5,16 +5,16 @@ import java.util.Stack;
 public class NearestGreaterToRight {
 
 	private static int[] nextGreaterElementUsingStack(int[] arr) {
-		int[] NGL = new int[arr.length];
+		int[] NGR = new int[arr.length];
 
 		Stack<Integer> stack = new Stack<>();
 		for (int i = arr.length - 1; i >= 0; i--) {
-			NGL[i] = -1;
+			NGR[i] = -1;
 
 			while (!stack.isEmpty()) {
 				int top = stack.peek();
 				if (top > arr[i]) {
-					NGL[i] = top;
+					NGR[i] = top;
 					break;
 				} else {
 					stack.pop();
@@ -23,7 +23,7 @@ public class NearestGreaterToRight {
 			stack.push(arr[i]);
 
 		}
-		return NGL;
+		return NGR;
 	}
 
 	public static void main(String[] args) {

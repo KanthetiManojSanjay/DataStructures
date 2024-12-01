@@ -91,12 +91,13 @@ public class PrintSubArrays {
     public static void main(String[] args) {
         int arr[] = {10, 20, 30, 40, 50, 60};
         int n = arr.length;
-//        printSubArrays(arr, n);
-//        int arr1[] = {-2, 3, 4, -1, 5, -12, 6, 1, 3};
+        printSubArrays(arr, n);
+//        int arr[] = {-2, 3, 4, -1, 5, -12, 6, 1, 3};
+//        int n = arr.length;
         //System.out.println(largestSubArraySum(arr1, n));
-//        System.out.println(largestSubArraySumUsingPrefixSum(arr1, n));
-        int arr1[] = {-3, -2, -1, -5, -4};
-        int n1 = arr1.length;
-        System.out.println(largestSubArraySumUsingKadanesAlgorithm(arr1, n1));
+//        System.out.println(largestSubArraySumUsingPrefixSum(arr, n));
+//        int arr1[] = {-3, -2, -1, -5, -4};
+//        int n1 = arr1.length;
+//        System.out.println(largestSubArraySumUsingKadanesAlgorithm(arr1, n1));
     }
 }

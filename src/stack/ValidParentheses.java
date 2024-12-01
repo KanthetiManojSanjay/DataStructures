@@ -37,7 +37,11 @@ public class ValidParentheses {
 	public static void main(String[] args) {
 		String str="]{()}";
 		boolean valid = isValid(str);
-		System.out.print("Valid Parenthesis is :"+ valid);
+		System.out.println("Valid Parenthesis is :"+ valid);
+
+		String str2="([])";
+		boolean valid2 = isValid(str2);
+		System.out.println("Valid Parenthesis is :"+ valid2);
 
 	}
 

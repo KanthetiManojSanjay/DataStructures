@@ -28,6 +28,7 @@ public class Heap {
 
 	}
 
+	//O(1)
 	public int getMin() {
 		return list.get(1);
 	}

@@ -119,16 +119,16 @@ public class Node {
         return 1 + Math.max(h1, h2);
     }
 
-    // Time complexity is O(N^2)as we are traversing twice for calculating height &
-    // diameter
+    // Time complexity is O(N^2)as we are traversing twice for calculating height & diameter
+    // Diameter is largest distance between two nodes
     public static int diameter(Node root) {
         if (root == null) {
             return 0;
         }
-
+        // If diameter lies through root then LH-1+ RH-1 + 2
         int D1 = height(root.left) + height(root.right);
-        int D2 = diameter(root.left);
-        int D3 = diameter(root.right);
+        int D2 = diameter(root.left); // If diameter lies in LH
+        int D3 = diameter(root.right); // If diamter lies in RH
         return Math.max(D1, Math.max(D2, D3));
     }
 
@@ -143,6 +143,7 @@ public class Node {
 
     }
 
+    // TimeComplexity - O(N)
     public static HDPair optDiameter(Node root) {
         HDPair p = new HDPair();
 
@@ -208,6 +209,7 @@ public class Node {
         boolean isBalanced;
     }
 
+    // height balanced tree - Height difference b/w Left & right subTree should be <=1
     public static HBPair heightBalancedTree(Node root) {
 
         HBPair hb = new HBPair();
@@ -235,6 +237,7 @@ public class Node {
     }
 
 
+    // Max subsetSum - If a node is considered then its parent/child shouldn't be considered to calculate maxSubsetSum
     public static MaxSubSumPair maximumSubSetSumTree(Node root) {
         MaxSubSumPair sumPair = new MaxSubSumPair();
         //base case
@@ -252,6 +255,7 @@ public class Node {
         return sumPair;
     }
 
+    // To print nodes that are k distance from root
     public static void printAtLevelK(Node root, int k) {
 
         //base case
@@ -267,6 +271,7 @@ public class Node {
         printAtLevelK(root.right, k - 1);
     }
 
+    // To print nodes that are k distance from target in a Binary tree
     public static int printNodesAtDistanceK(Node root, int target, int k) {
         // base case
         if (root == null) {
@@ -376,6 +381,20 @@ public class Node {
         return a.data == b.data && isSameTree(a.left, b.left) && isSameTree(a.right, b.right);
     }
 
+    public static Node invertTree(Node root) {
+        if (root == null) {
+            return null;
+        }
+        Node temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+
+        invertTree(root.left);
+        invertTree(root.right);
+
+        return root;
+    }
+
 
     public static void main(String[] args) {
 
@@ -448,6 +467,7 @@ public class Node {
             System.out.println("Not a symmetric tree");*/
 
 
+/*
         Node a = new Node(1);
         a.left = new Node(2);
         a.right = new Node(3);
@@ -459,7 +479,13 @@ public class Node {
             System.out.println("yes, it is a identical tree");
         else
             System.out.println("Not an identical tree");
+*/
 
+        // 1 2 3 4 5  6 7 -1 -1 -1 -1 -1 -1 -1 -1
+		Node r1 = levelorderBuild();
+        levelOrder(r1);
+        Node invertTree = invertTree(r1);
+        levelOrder(invertTree);
 
     }
 

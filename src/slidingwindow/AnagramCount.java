@@ -72,8 +72,8 @@ public class AnagramCount {
     }
 
     public static void main(String[] args) {
-//        String text = "forxxorfxdofr", word = "for";
-        String text = "aabaabaa", word = "aaba";
+        String text = "forxxorfxdofr", word = "for";
+//        String text = "aabaabaa", word = "aaba";
         System.out.println("Count of Anagrams by Bruteforce Approach is: " + count_BruteForce(text, word));
         System.out.println("Count of Anagrams by SlidingWindow Approach is: " + count_slidingWindow(text, word));
     }

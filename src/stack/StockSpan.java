@@ -65,7 +65,7 @@ public class StockSpan {
                 if (stockPrices[top] > stockPrices[i]) {
                     NGL[i] = top;
                     break;
-                } else {
+                }else {
                     stack.pop();
                 }
             }
