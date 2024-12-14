@@ -12,7 +12,7 @@ public class KRotate {
         int n = arr.length;
         k = k % n;
         List<Integer> resList = new ArrayList<>();
-        for (int i = n - k; i <= n - 1; i++) {
+        for (int i = n - k; i < n; i++) {
             resList.add(arr[i]);
         }
 
@@ -48,7 +48,7 @@ public class KRotate {
         int arr[] = {1, 3, 5, 7, 9};
         int k = 2;
         Integer[] krotate = krotate(arr, k);
-     /*   for (Integer i : krotate) {
+/*        for (Integer i : krotate) {
             System.out.print(i + ",");
         }*/
 

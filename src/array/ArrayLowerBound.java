@@ -31,10 +31,9 @@ public class ArrayLowerBound {
     }
 
     public static void main(String[] args) {
-//        int arr[] = {-1, -1, 2, 3, 5};
+        int arr[] = {-1, -1, 2, 3, 5};
 //        int arr[] = {1, 2, 3, 5};
-        int arr[] = {1, 2, 3, 5};
-        int val = 2;
+        int val = -2;
         System.out.println(lowerBound(arr, val));
     }
 }

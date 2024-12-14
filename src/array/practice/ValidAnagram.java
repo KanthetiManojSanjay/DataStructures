@@ -9,25 +9,23 @@ import java.util.Map;
 public class ValidAnagram {
 
     public static boolean isAnagram(String s, String t) {
-        char[] scharArray = s.toCharArray();
-        char[] tcharArray = t.toCharArray();
-        Map<Character, Integer> count = new HashMap<>();
+        if (s.length() != t.length())
+            return false;
 
+        Map<Character, Integer> countMap = new HashMap<>();
 
-        for (int i = 0; i < scharArray.length; i++) {
-            count.put(scharArray[i], count.getOrDefault(scharArray[i], 0) + 1);
+        for (int i = 0; i < s.length(); i++) {
+            countMap.put(s.charAt(i), countMap.getOrDefault(s.charAt(i), 0) + 1);
+            countMap.put(t.charAt(i), countMap.getOrDefault(t.charAt(i), 0) - 1);
         }
 
-        for (int i = 0; i < tcharArray.length; i++) {
-            count.put(tcharArray[i], count.getOrDefault(tcharArray[i], 0) - 1);
-        }
-
-        for (int x : count.values()) {
-            if (x != 0) {
+        for (Integer count : countMap.values()) {
+            if (count != 0) {
                 return false;
             }
         }
         return true;
+
 
     }
 
