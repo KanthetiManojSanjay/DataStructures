@@ -2,6 +2,7 @@ package twopointer;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class TwoSumProblem {
 
@@ -27,7 +28,7 @@ public class TwoSumProblem {
     // To get index
     // Time complexity O(N)
     private static int[] findTwoSumUsingHashMap(int[] arr, int target) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < arr.length; i++) {
             int complement = target - arr[i];
             if (map.containsKey(complement)) {

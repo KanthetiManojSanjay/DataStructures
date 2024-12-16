@@ -5,6 +5,7 @@ package slidingwindow;
  */
 public class MinimumSizeSubArraySum {
 
+    // Bruteforce approach - O(n*2) time complexity
     // //Find the Smallest subarray with Sum equal or greater than K
     private static int findLengthOfSmallestSubarray_BruteForce(int[] arr, int k) {
 

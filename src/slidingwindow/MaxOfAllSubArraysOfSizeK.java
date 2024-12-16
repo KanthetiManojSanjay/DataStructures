@@ -8,6 +8,7 @@ import java.util.PriorityQueue;
  */
 public class MaxOfAllSubArraysOfSizeK {
 
+    // Bruteforce approach - O(n*k) time complexity
     private static int[] maxofAllSubarray_BruteForce(int[] arr, int k) {
 
         int n = arr.length;
@@ -28,6 +29,7 @@ public class MaxOfAllSubArraysOfSizeK {
 
         int win_start = 0;
         int[] maxSubarrayNum = new int[arr.length - k + 1];
+        int idx = 0;
         PriorityQueue<Integer> queue = new PriorityQueue<>(Comparator.reverseOrder());
         for (int win_end = 0; win_end < arr.length; win_end++) {
             queue.add(arr[win_end]);
@@ -35,7 +37,7 @@ public class MaxOfAllSubArraysOfSizeK {
             // We've hit the window size. Find the maximum in the current window and Slide the window ahead
             if (win_end - win_start + 1 == k) {
                 Integer maxNumber = queue.peek();
-                maxSubarrayNum[win_start] = maxNumber;
+                maxSubarrayNum[idx++] = maxNumber;
 
                 // Discard a[windowStart] since we are sliding the window now. So it is going out of the window.
                 if (maxNumber == arr[win_start]) {

@@ -53,7 +53,8 @@ public class TripletsWithZeroSum {
 
     public static void main(String[] args) {
         int arr[] = {-5, 3, 2, -3, 1};
-        List<List<Integer>> tripletsWithZeroSum = findTripletsWithZeroSum(arr);
+        int arr1[] = {-1, 0, 1, 2, -1, -4};
+        List<List<Integer>> tripletsWithZeroSum = findTripletsWithZeroSum(arr1);
         System.out.println(tripletsWithZeroSum);
     }
 }

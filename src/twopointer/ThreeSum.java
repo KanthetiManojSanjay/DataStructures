@@ -1,4 +1,4 @@
-package array.practice;
+package twopointer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
