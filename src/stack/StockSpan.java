@@ -1,9 +1,11 @@
 package stack;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 public class StockSpan {
 
+    // TimeComplexity - O(N*2) & Space Complexity - O(1)
     public static int[] stockSpanUsingBruteForce(int[] stockPrices) {
 
         int n = stockPrices.length;
@@ -42,8 +44,10 @@ public class StockSpan {
         return span;
     }
 
+    // TimeComplexity - O(N) & Space Complexity - O(N)
     public static int[] stockSpanUsingStackUsingNGL(int[] stockPrices) {
         int[] ngl = findNearestGreaterToLeft(stockPrices);
+        System.out.println(Arrays.toString(ngl));
         int span[] = new int[ngl.length];
         for (int i = 0; i < ngl.length; i++) {
             span[i] = i - ngl[i];
