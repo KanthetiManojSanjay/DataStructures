@@ -4,6 +4,7 @@ package binarySearch;
  * @author kansanja on 18/04/24.
  */
 public class Sorted2DMatrixSearch {
+    // TimeComplexity - O(log(m*n))
     private static boolean searchMatrix(int[][] matrix, int target) {
 
         if (matrix.length == 0) {

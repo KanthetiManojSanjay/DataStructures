@@ -317,7 +317,6 @@ public class Node {
         traverseTree(root, d, map);
 
         for (Map.Entry<Integer, List<Integer>> m : map.entrySet()) {
-            int key = m.getKey();
             List<Integer> list = m.getValue();
             for (Integer l : list) {
                 System.out.print(l + " ");
@@ -335,7 +334,7 @@ public class Node {
         if (map.containsKey(d)) {
             map.get(d).add(node.data);
         } else {
-            List<Integer> list = new ArrayList<Integer>();
+            List<Integer> list = new ArrayList<>();
             list.add(node.data);
             map.put(d, list);
         }
@@ -347,13 +346,13 @@ public class Node {
     }
 
     public static int minDepth(Node root) {
-        Node temp = root;
-        if (temp != null) {
-            int hleft = height(root.left);
-            int hright = height(root.right);
-            return 1 + Math.min(hleft, hright);
-        }
-        return -1;
+        if (root == null)
+            return 0;
+//        Node temp = root;
+
+        int hleft = height(root.left);
+        int hright = height(root.right);
+        return 1 + Math.min(hleft, hright);
     }
 
     public static boolean isSymmetric(Node root) {
@@ -453,9 +452,9 @@ public class Node {
 //        verticalOrderPrint(root);
 
         // 2 7 5 -1 9 -1 1 11 4 -1 -1 -1 -1 -1 -1
-/*        Node r1 = levelorderBuild();
+        Node r1 = levelorderBuild();
         levelOrder(r1);
-        System.out.println("Minimum depth is : " + minDepth(r1));*/
+        System.out.println("Minimum depth is : " + minDepth(r1));
 
 
         // 1 2 2 3 4 4 3 -1 -1 -1 -1 -1 -1 -1 -1
@@ -482,10 +481,10 @@ public class Node {
 */
 
         // 1 2 3 4 5  6 7 -1 -1 -1 -1 -1 -1 -1 -1
-		Node r1 = levelorderBuild();
-        levelOrder(r1);
-        Node invertTree = invertTree(r1);
-        levelOrder(invertTree);
+//		Node r1 = levelorderBuild();
+//        levelOrder(r1);
+//        Node invertTree = invertTree(r1);
+//        levelOrder(invertTree);
 
     }
 

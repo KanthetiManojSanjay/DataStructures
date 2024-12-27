@@ -25,6 +25,7 @@ public class Car {
 
     public static void nearestCars(List<Car> carsList, int k) {
 
+        // MaxHeap based on distance
         PriorityQueue<Car> queue = new PriorityQueue<>(new Comparator<Car>() {
             @Override
             public int compare(Car o1, Car o2) {

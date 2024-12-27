@@ -29,8 +29,8 @@ public class rotatedSearch {
     }
 
     public static void main(String[] args) {
-        int[] arr = {8, 11, 13, 15, 1, 4, 6};
-        int target = 1;
+        int[] arr = {6, 8, 11, 13, 15, 1, 4};
+        int target = 4;
         int index = search(arr, target);
         System.out.println("Index of target is: " + index);
 

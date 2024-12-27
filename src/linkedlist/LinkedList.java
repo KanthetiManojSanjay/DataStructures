@@ -207,6 +207,10 @@ public class LinkedList {
 
     public Node kReverse(Node node, int k) {
 
+        //Base case
+        if (node == null)
+            return null;
+
         Node prev = null;
         Node curr = node;
         Node temp = null;
@@ -219,19 +223,18 @@ public class LinkedList {
             cnt++;
         }
         if (temp != null) {
-            head.next = kReverse(temp, k);
+            node.next = kReverse(temp, k);
         }
-        head = prev;
         return prev;
     }
 
     public void kReverse(int k) {
-        kReverse(head, 3);
+        head = kReverse(head, k);
         display();
     }
 
     // Time & Space complexity -> O(N+M)
-    public Node merge(Node a, Node b) {
+    private Node merge(Node a, Node b) {
 
         if (a == null) {
             return b;
@@ -263,6 +266,7 @@ public class LinkedList {
         System.out.println("");
     }
 
+    // TimeComplexity - O(N)
     public void middle() {
         // Node fastPtr=head.next - Incase if in even numbers (1->2->3->4) then o/p is 2
         Node fastPtr = head; // Here o/p is 3 & for odd no's there is no impact
@@ -275,7 +279,7 @@ public class LinkedList {
         System.out.println(slowPtr.value);
     }
 
-    public Node midPoint(Node node) {
+    private Node midPoint(Node node) {
         Node slowPtr = node;
         Node fastPtr = node.next;
         while (fastPtr != null && fastPtr.next != null) {
@@ -285,7 +289,7 @@ public class LinkedList {
         return slowPtr;
     }
 
-    public Node mergeSort(Node node) {
+    private Node mergeSort(Node node) {
         if (node == null || node.next == null)
             return node;
 
@@ -326,5 +330,40 @@ public class LinkedList {
         return false;
     }
 
+    public Node reorderList(Node head) {
+
+        Node mid = midPoint(head);
+        Node second = reverse(mid.next);
+
+
+        Node temp=head;
+        while(head!=null){
+            if(head==mid)
+                head.next=null;
+            head=head.next;
+        }
+        Node first = temp;
+        while (second != null) {
+            Node tmp1 = first.next;
+            Node tmp2 = second.next;
+            first.next = second;
+            second.next = tmp1;
+            first = tmp1;
+            second = tmp2;
+        }
+        return temp;
+    }
+
+    public void reorderList(LinkedList list) {
+        Node node = reorderList(list.head);
+        System.out.println("Reordered list");
+        while (node != null) {
+            System.out.print(node.value + "->");
+            node = node.next;
+        }
+        System.out.print("null");
+        System.out.print("");
+
+    }
 
 }

@@ -36,7 +36,7 @@ public class FindMinimumElementInRotatedSortedArray {
     }
 
     public static void main(String[] args) {
-        int nums[] = {5, 7, 9, 1, 3};
+        int nums[] = {5, 7, 8, 9, 1, 3};
         System.out.printf("Minimum Element = %d%n", findMinimumElement(nums));
     }
 }

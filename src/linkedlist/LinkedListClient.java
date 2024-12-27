@@ -29,7 +29,7 @@ public class LinkedListClient {
         list.display();
 
         list.reverse();
-
+        System.out.println("kReverse");
         list.kReverse(3);
 
         // 1->5->7->10
@@ -49,7 +49,7 @@ public class LinkedListClient {
         list1.mergeFun(list1, list2);
 
         list1.middle();
-		
+
 		/*14 -> 2 -> 17 -> 1 -> 5 -> 7 ->10
 		
 		Merge sort - 1->2->5->7->10->14->17
@@ -64,6 +64,23 @@ public class LinkedListClient {
         list3.insertAtFirst(2);
         list3.insertAtFirst(14);
         list3.sortLL(list3);
+
+        LinkedList list4 = new LinkedList();
+        list4.insertAtFirst(2);
+        list4.insertAtLast(4);
+        list4.insertAtLast(6);
+        list4.insertAtLast(8);
+        list4.insertAtLast(10);
+
+        LinkedList list5 = new LinkedList();
+        list5.insertAtFirst(0);
+        list5.insertAtLast(1);
+        list5.insertAtLast(2);
+        list5.insertAtLast(3);
+        list5.insertAtLast(4);
+        list5.insertAtLast(5);
+        list5.insertAtLast(6);
+        list5.reorderList(list5);
 
 
     }

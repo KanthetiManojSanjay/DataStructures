@@ -19,6 +19,7 @@ public class DynamicStack extends StackUsingArray {
      * <p>
      * With linkedList - we can do push by adding new item at the tail which can be done in O(1)
      * but while deleting as tail dont have prev Node reference we cant delete it in O(1) and we have traverse from head which can be O(N)
+     * Incase if we have doubly linkedlist then we could do deletion from tail in O(1) but the linkedlist that we created earlier was singly linkedlist
      * <p>
      * hence to solve the problem we can do push by adding new item at the head & delete the item from head - Both can be done in O(1)
      * by using the below methods of LinkedList class that we created earlier for stack functionality
