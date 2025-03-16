@@ -7,6 +7,9 @@ import java.util.Scanner;
 /**
  * @author kansanja on 03/12/24.
  */
+/*The median is the middle value in a sorted list of integers.
+    For lists of even length, there is no middle value, so the median is the mean of the two middle values.*/
+// TimeComplexity - O(NLogN) -> O(LogN) for insertion & O(1) for querying and for N elements it wil be O(NLogN)
 public class RunningMedian {
 
     // O(LogN) for each insertion so O(NLogN) for complete problem
@@ -29,7 +32,7 @@ public class RunningMedian {
 
             // If maxHeap size is greater than minHeap
             if (leftHeap.size() > rightHeap.size()) {
-                // If next element is greater than current median & if the current median is present in maxHeap then perform rebalancing by adding
+                // If next element is less than current median & if the current median is present in maxHeap then perform rebalancing by adding
                 // top element of maxHeap to minHeap and then delete it from maxHeap and then add that new element to maxHeap
                 if (nextNum < median) {
                     rightHeap.add(leftHeap.peek());
@@ -56,7 +59,7 @@ public class RunningMedian {
                     leftHeap.add(nextNum);
                 }
                 // If next element is greater than current median & if the current median is present in minHeap then perform rebalancing by adding
-                // top element of minHeap to maxHeap and then delete it from minHeap and then add the new element to maxHeap
+                // top element of minHeap to maxHeap and then delete it from minHeap and then add the new element to minHeap
                 else {
                     leftHeap.add(rightHeap.peek());
                     rightHeap.poll();

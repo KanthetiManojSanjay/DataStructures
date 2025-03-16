@@ -179,6 +179,15 @@ public class Graph {
         return false;
     }
 
+    //Bipartite graph - Two coloring problem
+    // Divide all vertices of a graph into 2 sets such that all edges of graph are between set1 & set2 but not within same set
+   /* Graph containing cycle with odd no of nodes willn't be partite
+    Tree (as they dont have cycle) are partite*/
+
+
+
+
+
     // Topological sort(in DAG - Directed Acyclic graph) using DFS
     List<Integer> topologicalSort() {
         boolean visited[] = new boolean[V];
