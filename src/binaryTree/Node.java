@@ -2,6 +2,7 @@ package binaryTree;
 
 import java.util.*;
 
+// Binary Tree - Each node can have atmost 2 children
 public class Node {
     static Scanner scanner = new Scanner(System.in);
     private int data;
@@ -209,7 +210,7 @@ public class Node {
         boolean isBalanced;
     }
 
-    // height balanced tree - Height difference b/w Left & right subTree should be <=1
+    // height balanced tree - Each node in the BT should mantain this property - Height difference b/w Left & right subTree should be <=1
     public static HBPair heightBalancedTree(Node root) {
 
         HBPair hb = new HBPair();
@@ -399,14 +400,14 @@ public class Node {
 
         // 1 2 4 -1 -1 5 7 -1 -1 -1 3 -1 6 -1 -1
 
-//        Node root = buildTree();
+        Node root = buildTree();
 //        printPreorder(root);
 //        System.out.println();
 //        printInorder(root);
 //        System.out.println();
 //        printPostOrder(root);
 //        System.out.println();
-//        levelOrder(root);
+        levelOrder(root);
 
 
         // 1 2 3 4 5 -1 6 -1 -1 7 -1 -1 -1 -1 -1
@@ -442,7 +443,7 @@ public class Node {
 /*        MaxSubSumPair sumPair = maximumSubSetSumTree(root);
         System.out.println("Max subset sum is: " + Math.max(sumPair.inc, sumPair.exc));*/
 
-//        printAtLevelK(root, 2);
+        printAtLevelK(root, 2);
 
         // 1 2 4 -1 -1 5 7 -1 -1 8 9 -1 -1 10 -1 -1 3 -1 6 -1 -1
 /*        int target = 5;
@@ -452,9 +453,9 @@ public class Node {
 //        verticalOrderPrint(root);
 
         // 2 7 5 -1 9 -1 1 11 4 -1 -1 -1 -1 -1 -1
-        Node r1 = levelorderBuild();
-        levelOrder(r1);
-        System.out.println("Minimum depth is : " + minDepth(r1));
+//        Node r1 = levelorderBuild();
+//        levelOrder(r1);
+//        System.out.println("Minimum depth is : " + minDepth(r1));
 
 
         // 1 2 2 3 4 4 3 -1 -1 -1 -1 -1 -1 -1 -1

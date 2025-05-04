@@ -146,6 +146,7 @@ public class Graph {
     boolean detectCycle_DirectedGraph(int src) {
         boolean visited[] = new boolean[V];
         boolean stack[] = new boolean[V];
+        // Incase if there are multiple components in graph then to cover all vertices by making multiple calls
         for (int i = 0; i < V; i++) {
             if (!visited[i]) {
                 if (detectCycle_DirectedGraphHelper(i, visited, stack)) {
@@ -183,9 +184,6 @@ public class Graph {
     // Divide all vertices of a graph into 2 sets such that all edges of graph are between set1 & set2 but not within same set
    /* Graph containing cycle with odd no of nodes willn't be partite
     Tree (as they dont have cycle) are partite*/
-
-
-
 
 
     // Topological sort(in DAG - Directed Acyclic graph) using DFS

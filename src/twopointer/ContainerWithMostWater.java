@@ -4,7 +4,22 @@ package twopointer;
  * @author kansanja on 18/12/24.
  */
 public class ContainerWithMostWater {
-    private static int maxArea(int[] heights) {
+
+    //BruteForce Approach
+    // TimeComplexity - O(N^2) & SpaceComplexity - O(1)
+    private static int maxAreaApproach1(int[] heights) {
+        int res = 0;
+        for (int i = 0; i < heights.length; i++) {
+            for (int j = i + 1; j < heights.length; j++) {
+                res = Math.max(res, Math.min(heights[i], heights[j]) * (j - i));
+            }
+        }
+        return res;
+    }
+
+    //Optimised Approach
+    //TimeComplexity - O(N) & SpaceComplexity - O(1)
+    private static int maxAreaApproach2(int[] heights) {
 
         int start = 0;
         int end = heights.length - 1;
@@ -23,6 +38,7 @@ public class ContainerWithMostWater {
 
     public static void main(String[] args) {
         int[] height = {1, 7, 2, 5, 4, 7, 3, 6};
-        System.out.printf("Maximum amount of water a container can store is %d%n", maxArea(height));
+        System.out.printf("Maximum amount of water a container can store is %d%n", maxAreaApproach1(height));
+        System.out.printf("Maximum amount of water a container can store is %d%n", maxAreaApproach2(height));
     }
 }

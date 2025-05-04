@@ -3,6 +3,10 @@ package binarySeachTree;
 import java.util.LinkedList;
 import java.util.Queue;
 
+// BST - It should be Binary Tree
+// At every node its Left SubTree & RightSubTree should also be BST
+// Either of them can be considered depending on equality - All nodes in Left SubTree should have value <= root & all nodes in rightSubTree should have value > root
+// (or) All nodes in Left SubTree should have value < root & all nodes in rightSubTree should have value >= root
 public class Node {
 
     private int data;
