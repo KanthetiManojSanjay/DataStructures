@@ -13,7 +13,7 @@ package queue;
   Operation    Throws Exception     Returns special value(returns boolean value)
   ---------------------------------------------------------------------------
   Insert         add(e)              offer(e)
-  Remove        remove()             poll()
+  Remove         remove()             poll()
   Examine       element()            peek()
 
  3 implementation of Queue interface are

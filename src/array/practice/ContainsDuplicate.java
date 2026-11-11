@@ -1,11 +1,14 @@
 package array.practice;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 /**
  * @author kansanja on 09/04/24.
  */
+
 public class ContainsDuplicate {
 
     public static boolean containsDuplicate(int[] nums) {
@@ -30,10 +33,24 @@ public class ContainsDuplicate {
 
     }
 
+    // Time complexity & Space complexity - O(N)
+    public static boolean hasDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        HashSet<Integer> seen = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (seen.contains(nums[i])) {
+                return true;
+            }
+            seen.add(nums[i]);
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
 //        int[] nums = {1, 2, 3, 1};
         int[] nums = {1, 2, 3, 4};
-        System.out.println(containsDuplicate(nums));
+//        System.out.println(containsDuplicate(nums));
+        System.out.println(hasDuplicate(nums));
     }
 
 }

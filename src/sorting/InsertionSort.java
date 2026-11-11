@@ -1,7 +1,8 @@
 package sorting;
 
-//Time complexity - O(N^2)
+//Time complexity - O(N^2 for worst/avg case if the array is in reverse order) & O(N) for best case if the array is already sorted)
 public class InsertionSort {
+
 
 	public static void insertion_sort(int[] arr, int n) {
 		for (int i = 1; i <= n - 1; i++) {

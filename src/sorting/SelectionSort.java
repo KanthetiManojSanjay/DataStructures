@@ -1,7 +1,7 @@
 package sorting;
 
 // Repeatedly find min element from unsorted array and place it at the beginning
-//Time complexity - O(N^2)
+//Time complexity - O(N^2 for worst/avg/best case)
 public class SelectionSort {
 
     public static void selection_sort(int[] arr, int n) {

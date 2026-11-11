@@ -27,7 +27,6 @@ public class ValidPalindrome {
         while (left < right) {
             while (left < right && !isAlphaNumberic(s.charAt(left))) {
                 left++;
-
             }
             while (left < right && !isAlphaNumberic(s.charAt(right))) {
                 right--;
