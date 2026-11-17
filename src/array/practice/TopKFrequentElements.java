@@ -39,7 +39,7 @@ public class TopKFrequentElements {
         }
 
         // minHeap
-        Queue<int[]> heap = new PriorityQueue<>();
+        Queue<int[]> heap = new PriorityQueue<>((a,b)-> a[0]-b[0]);
         for (Map.Entry<Integer, Integer> ele : map.entrySet()) {
             heap.offer(new int[]{ele.getValue(), ele.getKey()});
             if (heap.size() > k) {
@@ -106,14 +106,14 @@ public class TopKFrequentElements {
 
     public static void main(String[] args) {
         int nums[] = {1, 2, 2, 3, 3, 3};
-/*        int[] res = topKFrequent(nums, 2);
-        for (int i = 0; i < res.length; i++) {
-            System.out.println(res[i]);
-        }*/
-
-        int[] res = topKFrequent_using_bucketSort(nums, 2);
+        int[] res = topKFrequent(nums, 2);
         for (int i = 0; i < res.length; i++) {
             System.out.println(res[i]);
         }
+
+ /*        int[] res = topKFrequent_using_bucketSort(nums, 2);
+        for (int i = 0; i < res.length; i++) {
+            System.out.println(res[i]);
+        }*/
     }
 }

@@ -93,7 +93,7 @@ public class Heap {
 
         while (!h.isEmpty()) {
             System.out.println(h.getMin());
-            h.deleteMin(); //logn
+//            h.deleteMin(); //logn
         }
 
     }

@@ -41,11 +41,11 @@ public class TwoSum {
 
     public static void main(String[] args) {
 
-     /*   int[] nums = {2, 7, 11, 15};
-        int target = 9;*/
+        int[] nums = {2, 7, 11, 15};
+        int target = 9;
 
-        int[] nums = {3, 2, 0};
-        int target = 6;
+/*        int[] nums = {3, 2, 0};
+        int target = 6;*/
 
       /*  int[] twoSumPairValue = twoSumPairValue(nums, target);
         System.out.println(twoSumPairValue[0] + "," + twoSumPairValue[1]);*/

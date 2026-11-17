@@ -269,7 +269,7 @@ public class LinkedList {
     // TimeComplexity - O(N)
     public void middle() {
         // Node fastPtr=head.next - Incase if in even numbers (1->2->3->4) then o/p is 2
-        Node fastPtr = head; // Here o/p is 3 & for odd no's there is no impact
+        Node fastPtr = head; // Here o/p is 3 in above example for even numbers & for odd no's there is no impact
         Node slowPtr = head;
 
         while (fastPtr != null && fastPtr.next != null) {
